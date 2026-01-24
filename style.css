@@ -1,10 +1,29 @@
+body {
+    background-color: lightblue;
+}
+
 h1 {
     color: #008080;
     text-align: center;
     margin: auto;
+    font-family: "Afacad Flux", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    font-size: 4rem;
 }
 
 h2 {
+    text-align: center;
+    margin: auto;
+    font-family: "Edu NSW ACT Cursive", cursive;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+p {
     text-align: center;
     margin: auto;
 }
@@ -16,6 +35,11 @@ h2 {
 h3 {
     text-align: center;
     margin: auto;
+    font-family: "Afacad Flux", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
 }
 
 img {
@@ -24,7 +48,6 @@ img {
 }
 
 .container {
-  text-align: center; 
+    text-align: center;
     margin: auto;
 }
-
