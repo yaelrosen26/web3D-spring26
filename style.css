@@ -8,7 +8,7 @@ h1 {
     margin: auto;
     font-family: "Afacad Flux", sans-serif;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: weight;
     font-style: normal;
     font-variation-settings: "slnt" 0;
     font-size: 4rem;
@@ -19,7 +19,7 @@ h2 {
     margin: auto;
     font-family: "Edu NSW ACT Cursive", cursive;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: weight;
     font-style: normal;
 }
 
@@ -28,10 +28,10 @@ p {
     margin: auto;
     font-family: "Afacad Flux", sans-serif;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: weight;
     font-style: normal;
     font-variation-settings: "slnt" 0;
-}
+    }
 
 .fit-picture {
     width: 250px;
@@ -42,7 +42,7 @@ h3 {
     margin: auto;
     font-family: "Afacad Flux", sans-serif;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: weight;
     font-style: normal;
     font-variation-settings: "slnt" 0;
 }
