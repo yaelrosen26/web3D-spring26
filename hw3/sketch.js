@@ -2,30 +2,25 @@ let myShape;
 
 function setup() {
     let canvas = createCanvas(400, 400, WEBGL);
+
+}
+
+function draw (){
     background(0);
-    rose();
-    rose();
-    rose();
-    rose();
-}
-
-function draw() {
-    //rose();
-    //rose();
-    //rose();
-    //rose();
-}
-
-function rose() {
-    angleMode(DEGREES);
     orbitControl();
     noStroke();
     lights();
+    rose();
+    rose();
+    rose();
+    rose();
+}
 
+function rose(){
+    angleMode(DEGREES);
     fill(9, 135, 79);
     shininess(10);
     specularMaterial(9, 135, 79);
-    //emissiveMaterial(255,0,255);
     cylinder(5, 150);
 
     fill(224, 33, 16);
