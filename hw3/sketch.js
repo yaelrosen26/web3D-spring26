@@ -10,14 +10,16 @@ function draw (){
     orbitControl();
     noStroke();
     lights();
-    rose();
-    rose();
-    rose();
+    rose(0,0,0);
+    rose(100,0,0);
+    rose(0,0,300);
     rose();
 }
 
-function rose(){
+function rose(x,y,z){
     angleMode(DEGREES);
+    translate(x,y,z);
+    push();
     fill(9, 135, 79);
     shininess(10);
     specularMaterial(9, 135, 79);
@@ -46,4 +48,5 @@ function rose(){
     translate(30, -30, 0);
     rotateZ(180);
     cone(5, 25);
+    pop();
 }
