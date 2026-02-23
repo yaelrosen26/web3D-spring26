@@ -1,3 +1,7 @@
+function preload() {
+    font = loadFont("./watchfont.ttf");
+}
+
 function setup() {
     let canvas = createCanvas(400, 400, WEBGL);
     angleMode(DEGREES);
@@ -8,6 +12,16 @@ function draw() {
     background(200);
     orbitControl();
 
+    textFont(font);
+    fill(0);
+    textSize(45);
+    for (let i = 0; i < 10 ; i++) {
+    push();
+    translate(0,0,i*0.5);
+    text("12:00",-50,-50);
+    pop();
+    }
+    
     //watch body
     push();
     fill(50);
@@ -49,10 +63,10 @@ function draw() {
     pop();
 
     //screen
-    push();
-    translate(0, 0, 8);
+    //push();
+    //translate(0, 0, 8);
     //plane(70, 90);
-    pop();
+    //pop();
 
     //band
     push();
