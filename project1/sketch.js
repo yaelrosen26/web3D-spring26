@@ -11,14 +11,18 @@ function draw() {
     background(0);
     background(200);
     orbitControl();
+    lights();
+    ambientLight(200);
+    spotLight(227, 216, 16, 0, 0, 40, 0, 0, -1, 90);
 
     textFont(font);
     fill(0);
     textSize(45);
-    for (let i = 0; i < 10 ; i++) {
+    for (let i = 0; i < 20 ; i++) {
     push();
     translate(0,0,i*0.5);
     text("12:00",-50,-50);
+    text("TUE 24",-50,-80);
     pop();
     }
     
