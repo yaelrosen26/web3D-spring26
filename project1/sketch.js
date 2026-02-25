@@ -1,3 +1,7 @@
+let line1 = display;
+let line2 = messages;
+let objectSwap = false;
+
 function preload() {
     font = loadFont("./watchfont.ttf");
 }
@@ -7,9 +11,6 @@ function setup() {
     angleMode(DEGREES);
 }
 
-let line1 = display;
-let line2 = messages;
-
 function draw() {
     background(20, 27, 77);
     orbitControl();
@@ -18,7 +19,7 @@ function draw() {
     spotLight(227, 216, 16, 0, -40, 0, 0, 1, 0, 100, 0.5);
 
     //display();
-    messages();
+    //messages();
 
     //watch body
     push();
@@ -76,9 +77,18 @@ function draw() {
     translate(-100, 0, 110);
     box(120, 60, 5);
     pop();
+    
+    //swaping
+    push();
+    if (modelSwap) {
+        model(line1);
+    } else if (!line2) {
+        model(myShape);
+    }
+    pop();
 }
 
-function display(){
+function display() {
     textFont(font);
     fill(227, 216, 16, 20);
     textSize(45);
@@ -94,7 +104,7 @@ function display(){
     }
 }
 
-function messages(){
+function messages() {
     textFont(font);
     fill(227, 216, 16, 20);
     for (let i = 0; i < 20; i++) {
@@ -107,13 +117,11 @@ function messages(){
 }
 
 function keyPressed() {
-  if (key=="s") {
-    if(line1) {
-      line1 = false;
-    } else if(!line1) {
-      line1 = true;
+    if (key == "s") {
+        if (objectSwap) {
+            objectSwap = false;
+        } else if (!objectSwap) {
+            objectSwap = true;
+        }
     }
-  }
 }
-
-
