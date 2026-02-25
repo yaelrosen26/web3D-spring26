@@ -7,25 +7,19 @@ function setup() {
     angleMode(DEGREES);
 }
 
+let line1 = display;
+let line2 = messages;
+
 function draw() {
-    background(0);
-    background(200);
+    background(20, 27, 77);
     orbitControl();
     lights();
     ambientLight(200);
-    spotLight(227, 216, 16, 0, 0, 40, 0, 0, -1, 90);
+    spotLight(227, 216, 16, 0, -40, 0, 0, 1, 0, 100, 0.5);
 
-    textFont(font);
-    fill(0);
-    textSize(45);
-    for (let i = 0; i < 20 ; i++) {
-    push();
-    translate(0,0,i*0.5);
-    text("12:00",-50,-50);
-    text("TUE 24",-50,-80);
-    pop();
-    }
-    
+    //display();
+    messages();
+
     //watch body
     push();
     fill(50);
@@ -66,12 +60,6 @@ function draw() {
     cylinder(10, 20);
     pop();
 
-    //screen
-    //push();
-    //translate(0, 0, 8);
-    //plane(70, 90);
-    //pop();
-
     //band
     push();
     translate(0, 110, 0);
@@ -89,3 +77,43 @@ function draw() {
     box(120, 60, 5);
     pop();
 }
+
+function display(){
+    textFont(font);
+    fill(227, 216, 16, 20);
+    textSize(45);
+    for (let i = 0; i < 20; i++) {
+        push();
+        translate(0, 0, i * 0.5);
+        text("12:00", -55, -60);
+        textSize(30);
+        text("TUE 24", -40, -100);
+        textSize(25);
+        text("36 Degrees", -55, -35);
+        pop();
+    }
+}
+
+function messages(){
+    textFont(font);
+    fill(227, 216, 16, 20);
+    for (let i = 0; i < 20; i++) {
+        push();
+        translate(0, 0, i * 0.5);
+        translate(20, -50, 0);
+        plane(50, 10);
+        pop();
+    }
+}
+
+function keyPressed() {
+  if (key=="s") {
+    if(line1) {
+      line1 = false;
+    } else if(!line1) {
+      line1 = true;
+    }
+  }
+}
+
+
