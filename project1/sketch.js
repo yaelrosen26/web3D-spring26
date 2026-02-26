@@ -12,7 +12,7 @@ function setup() {
 }
 
 function draw() {
-    background(20, 27, 77);
+    background(9, 54, 128);
     orbitControl();
     lights();
     ambientLight(200);
@@ -107,11 +107,12 @@ function display() {
 function messages() {
     textFont(font);
     fill(227, 216, 16, 20);
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 1; i++) {
         push();
         translate(0, 0, i * 0.5);
         translate(20, -50, 0);
-        plane(70, 30);
+        noStroke();
+        box(60, 30, 10);
         pop();
     }
 }
