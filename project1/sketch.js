@@ -1,9 +1,13 @@
 let line1 = display;
 let line2 = messages;
 let objectSwap = false;
+let myImg;
+let myImg1;
 
 function preload() {
     font = loadFont("./watchfont.ttf");
+    myImg = loadImage("./message1.png");
+    myImg1 = loadImage("./message.png");
 }
 
 function setup() {
@@ -17,9 +21,6 @@ function draw() {
     lights();
     ambientLight(200);
     spotLight(227, 216, 16, 0, -40, 0, 0, 1, 0, 100, 0.5);
-
-    //display();
-    //messages();
 
     //watch body
     push();
@@ -90,6 +91,7 @@ function draw() {
 
 function display() {
     textFont(font);
+    spotLight(227, 216, 16, 0, -40, 0, 0, 1, 0, 100, 0.5);
     fill(227, 216, 16, 20);
     textSize(45);
     for (let i = 0; i < 20; i++) {
@@ -106,13 +108,16 @@ function display() {
 
 function messages() {
     textFont(font);
-    fill(227, 216, 16, 20);
-    for (let i = 0; i < 1; i++) {
+    fill(227, 216, 16, 40);
+    for (let i = 0; i < 20; i++) {
         push();
         translate(0, 0, i * 0.5);
         translate(20, -50, 0);
         noStroke();
-        box(60, 30, 10);
+        tint(255, 25);
+        image(myImg, -30, 5, 60, 20);
+        image(myImg1, -70, -22, 60, 20);
+        image(myImg, -30, -50, 60, 20);
         pop();
     }
 }
