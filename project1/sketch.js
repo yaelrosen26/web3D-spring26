@@ -13,6 +13,7 @@ function preload() {
 function setup() {
     let canvas = createCanvas(400, 400, WEBGL);
     angleMode(DEGREES);
+    canvas.position(100, 200);
 }
 
 function draw() {
