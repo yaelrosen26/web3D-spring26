@@ -77,13 +77,13 @@ function draw() {
     translate(-100, 0, 110);
     box(120, 60, 5);
     pop();
-    
+
     //swaping
     push();
-    if (modelSwap) {
-        model(line1);
-    } else if (!line2) {
-        model(myShape);
+    if (objectSwap) {
+        display();
+    } else if (!objectSwap) {
+        messages();
     }
     pop();
 }
@@ -111,7 +111,7 @@ function messages() {
         push();
         translate(0, 0, i * 0.5);
         translate(20, -50, 0);
-        plane(50, 10);
+        plane(70, 30);
         pop();
     }
 }
