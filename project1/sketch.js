@@ -3,6 +3,7 @@ let line2 = messages;
 let objectSwap = false;
 let myImg;
 let myImg1;
+let canvas;
 
 function preload() {
     font = loadFont("./watchfont.ttf");
@@ -13,7 +14,7 @@ function preload() {
 function setup() {
     let canvas = createCanvas(400,400, WEBGL);
     angleMode(DEGREES);
-    canvas.position(100, 200);
+    canvas.parent('sketch-holder');
 }
 
 function draw() {
