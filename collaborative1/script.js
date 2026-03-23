@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "./src/OrbitControls.js";
 let camera, canvas, controls, scene, renderer;
-
 init();
 
 function init() {
@@ -13,6 +12,10 @@ function init() {
     renderer.setSize(400, 400);
     renderer.setAnimationLoop(animate);
     canvas.appendChild(renderer.domElement);
+
+    //textures for the image plane
+    const textureLoader = new THREE.TextureLoader();
+    const backgroundTexture = textureLoader.load("climatechange.png");
 
     // Setup camera
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
@@ -65,6 +68,18 @@ function init() {
     mesh2.rotateX(-1.5708);
     scene.add(mesh2);
 
+    //all the background stuff
+    const background = new THREE.PlaneGeometry(500, 500);
+    const backgroundMaterial = new THREE.MeshBasicMaterial({
+        map: backgroundTexture,
+        side: THREE.DoubleSide
+    });
+
+    const backgroundPlane = new THREE.Mesh(background, backgroundMaterial);
+    backgroundPlane.position.set(-200, 200, 0);
+    scene.add(backgroundPlane);
+    backgroundPlane.rotation.y = 1.5;
+
     // lights
     const dirLight1 = new THREE.DirectionalLight(0xffffff, 3);
     dirLight1.position.set(1, 1, 1);
@@ -78,12 +93,14 @@ function init() {
     scene.add(ambientLight);
 }
 
-
+// Function to update moving objects, in this case the camera.
+// The render function is trigger at the end to update the canvas.
 function animate() {
     controls.update();
     render();
 }
 
+// Function to render the scene using the camera.
 function render() {
     renderer.render(scene, camera);
 }
