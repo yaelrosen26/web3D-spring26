@@ -1,0 +1,54 @@
+@font-face {
+ font-family: 'Bitcount Single';
+ src: url("./BitcountSingle-Light.ttf") format('truetype');
+}
+
+body {
+    background: blue;
+    color: white;
+}
+
+main {
+  padding-left: 10%;
+  padding-right: 10%;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+}
+
+h2 {
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.subtitle {
+  color: lightgray;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+p, ul {
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-align-last: center;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+  padding-bottom: 20px;
+}
