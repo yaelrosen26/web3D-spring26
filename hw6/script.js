@@ -46,11 +46,39 @@ function init() {
     controls.maxPolarAngle = Math.PI / 2;
 
     // Add world geometry
-    const coneGeometry = new THREE.CylinderGeometry(50, 50, 300);
-    const material1 = new THREE.MeshPhongMaterial({ color: 0x0a5e2e, flatShading: true });
-    const mesh3 = new THREE.InstancedMesh(coneGeometry, material1, 500);
-    mesh3.position.set(-100, 10, 130);
+    const trunkGeometry = new THREE.CylinderGeometry(20, 20, 200);
+    const material1 = new THREE.MeshPhongMaterial({ color: 0x4f3c09, flatShading: true });
+    const mesh3 = new THREE.InstancedMesh(trunkGeometry, material1, 500);
+    mesh3.position.set(-100, -100, 0);
     scene.add(mesh3);
+
+    const coneGeometry = new THREE.ConeGeometry(90, 120, 300);
+    const material2 = new THREE.MeshPhongMaterial({ color: 0x0a5e2e, flatShading: true });
+    const mesh4 = new THREE.InstancedMesh(coneGeometry, material2, 500);
+    mesh4.position.set(-100, 10, 0);
+    scene.add(mesh4);
+
+    const torusGeometry = new THREE.TorusGeometry(20, 20, 300);
+    const material3 = new THREE.MeshPhongMaterial({ color: 0x60b3eb, flatShading: true });
+    const mesh5 = new THREE.InstancedMesh(torusGeometry, material3, 500);
+    mesh5.position.set(-100, 150, -100);
+    mesh5.rotateY(90);
+    scene.add(mesh5);
+
+    const torus1Geometry = new THREE.TorusGeometry(20, 20, 300);
+    const material4 = new THREE.MeshPhongMaterial({ color: 0x60b3eb, flatShading: true });
+    const mesh6 = new THREE.InstancedMesh(torus1Geometry, material4, 500);
+    mesh6.position.set(-100, 150, -140);
+    mesh6.rotateY(90);
+    scene.add(mesh6);
+    
+    const torus2Geometry = new THREE.TorusGeometry(20, 20, 300);
+    const material5 = new THREE.MeshPhongMaterial({ color: 0x60b3eb, flatShading: true });
+    const mesh7 = new THREE.InstancedMesh(torus2Geometry, material5, 500);
+    mesh7.position.set(-100, 100, -125);
+    mesh7.rotateY(90);
+    scene.add(mesh7);
+
 
     // lights
     const dirLight1 = new THREE.DirectionalLight(0xffffff, 3);

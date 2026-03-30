@@ -4,7 +4,7 @@
 }
 
 body {
-    background: blue;
+    background: white;
     color: white;
 }
 
@@ -23,6 +23,7 @@ h1 {
   text-align: center;
   margin: auto;
   padding: 10px;
+  color: black;
 }
 
 h2 {
