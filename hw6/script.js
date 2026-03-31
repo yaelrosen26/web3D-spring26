@@ -10,7 +10,7 @@ import * as THREE from "three";
 
 // The plug-in for orbit controls
 import { OrbitControls } from "./src/OrbitControls.js";
-import { FontLoader } from "./src/FontLoader.js";
+//import { FontLoader } from "./src/FontLoader.js";
 
 // Declaring global variables.
 let camera, canvas, controls, scene, renderer;
