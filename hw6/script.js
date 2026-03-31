@@ -10,6 +10,7 @@ import * as THREE from "three";
 
 // The plug-in for orbit controls
 import { OrbitControls } from "./src/OrbitControls.js";
+import { FontLoader } from "./src/FontLoader.js";
 
 // Declaring global variables.
 let camera, canvas, controls, scene, renderer;
@@ -78,7 +79,6 @@ function init() {
     mesh7.position.set(-100, 100, -125);
     mesh7.rotateY(90);
     scene.add(mesh7);
-
 
     // lights
     const dirLight1 = new THREE.DirectionalLight(0xffffff, 3);
