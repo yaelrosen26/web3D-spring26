@@ -1,9 +1,4 @@
-// Basic Three.js Example
-// Chelsea Thompto - Spring 2026
-
-// Three.js uses an import map to add features.
-// The "import * as THREE from 'three';" will be
-// in all sketches. Add-ons will be added after.
+//90 degrees = 1.5708
 
 // The main library script
 import * as THREE from "three";
@@ -47,40 +42,84 @@ function init() {
 
     // Add world geometry
 
-    // cabinet
+    // cabinet1
     const leg = new THREE.BoxGeometry(10, 100, 10);
-    const material = new THREE.MeshPhongMaterial({ color: 0x14401e, flatShading: true });
+    const material = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
     const mesh = new THREE.InstancedMesh(leg, material, 500);
-    mesh.position.set(-100, 0, 50);
+    mesh.position.set(50, 0, 50);
     scene.add(mesh);
 
     const leg1 = new THREE.BoxGeometry(10, 100, 10);
-    const material1 = new THREE.MeshPhongMaterial({ color: 0x14401e, flatShading: true });
+    const material1 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
     const mesh1 = new THREE.InstancedMesh(leg1, material1, 500);
-    mesh1.position.set(-100, 0, -50);
+    mesh1.position.set(50, 0, -50);
     scene.add(mesh1);
-    
+
     const leg2 = new THREE.BoxGeometry(10, 100, 10);
-    const material2 = new THREE.MeshPhongMaterial({ color: 0x14401e, flatShading: true });
+    const material2 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
     const mesh2 = new THREE.InstancedMesh(leg2, material2, 500);
-    mesh2.position.set(-175, 0, 50);
+    mesh2.position.set(125, 0, 50);
     scene.add(mesh2);
-    
+
     const leg3 = new THREE.BoxGeometry(10, 100, 10);
-    const material3 = new THREE.MeshPhongMaterial({ color: 0x14401e, flatShading: true });
+    const material3 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
     const mesh3 = new THREE.InstancedMesh(leg3, material3, 500);
-    mesh3.position.set(-175, 0, -50);
+    mesh3.position.set(125, 0, -50);
     scene.add(mesh3);
-    
-    const back = new THREE.BoxGeometry(3, 30, 50);
-    const material4 = new THREE.MeshPhongMaterial({ color: 0x14401e, flatShading: true });
+
+    const back = new THREE.BoxGeometry(3, 30, 100);
+    const material4 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
     const mesh4 = new THREE.InstancedMesh(back, material4, 500);
-    mesh4.position.set(100, 0, -50);
+    mesh4.position.set(50, 35, 0);
     scene.add(mesh4);
+
+    const front = new THREE.BoxGeometry(3, 30, 100);
+    const material5 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
+    const mesh5 = new THREE.InstancedMesh(front, material5, 500);
+    mesh5.position.set(125, 35, 0);
+    scene.add(mesh5);
+
+    const right = new THREE.BoxGeometry(3, 30, 80);
+    const material6 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
+    const mesh6 = new THREE.InstancedMesh(right, material6, 500);
+    mesh6.position.set(88, 35, -50);
+    mesh6.rotateY(1.5708);
+    scene.add(mesh6);
+
+    const left = new THREE.BoxGeometry(3, 30, 80);
+    const material7 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
+    const mesh7 = new THREE.InstancedMesh(left, material7, 500);
+    mesh7.position.set(88, 35, 50);
+    mesh7.rotateY(1.5708);
+    scene.add(mesh7);
+
+    const bottom = new THREE.BoxGeometry(100, 3, 80);
+    const material8 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
+    const mesh8 = new THREE.InstancedMesh(bottom, material8, 500);
+    mesh8.position.set(90, 19, -1);
+    mesh8.rotateY(1.5708);
+    scene.add(mesh8);
+
+    const top = new THREE.BoxGeometry(100, 3, 80);
+    const material9 = new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        metalness: 0,
+        roughness: 0,
+        transmission: 1, // enables glass transparency
+        transparent: true,
+        opacity: 1,
+        ior: 1.5, // index of refraction (glass ≈ 1.5)
+        thickness: 0.5, // gives depth to refraction
+        envMapIntensity: 1
+    });
+    const mesh9 = new THREE.InstancedMesh(top, material9, 500);
+    mesh9.position.set(90, 100, -1);
+    mesh9.rotateY(1.5708);
+    scene.add(mesh9);
 
     // Ground
     const earth = new THREE.PlaneGeometry(2000, 2000);
-    const ground = new THREE.MeshPhongMaterial({ color: 0x402314, flatShading: true });
+    const ground = new THREE.MeshPhongMaterial({ color: 0x968d88, flatShading: true });
     const meshFloor = new THREE.InstancedMesh(earth, ground, 500);
     meshFloor.translateY(-60);
     meshFloor.rotateX(-1.5708);
