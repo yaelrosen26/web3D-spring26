@@ -105,15 +105,15 @@ function init() {
         color: 0xffffff,
         metalness: 0,
         roughness: 0,
-        transmission: 1, // enables glass transparency
+        transmission: 1, 
         transparent: true,
         opacity: 1,
-        ior: 1.5, // index of refraction (glass ≈ 1.5)
-        thickness: 0.5, // gives depth to refraction
+        ior: 1.5, 
+        thickness: 0.5, 
         envMapIntensity: 1
     });
     const mesh9 = new THREE.InstancedMesh(top, material9, 500);
-    mesh9.position.set(90, 100, -1);
+    mesh9.position.set(90, 50, -1);
     mesh9.rotateY(1.5708);
     scene.add(mesh9);
 
