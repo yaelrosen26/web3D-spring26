@@ -117,10 +117,10 @@ function init() {
     mesh9.rotateY(1.5708);
     scene.add(mesh9);
     
-    const knob = new THREE.SphereGeometry(10, 30, 80);
+    const knob = new THREE.SphereGeometry(5, 20, 30);
     const material10 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
     const mesh10 = new THREE.InstancedMesh(knob, material10, 500);
-    mesh10.position.set(90, 100, -1);
+    mesh10.position.set(130, 35, -1);
     mesh10.rotateY(1.5708);
     scene.add(mesh10);
 
