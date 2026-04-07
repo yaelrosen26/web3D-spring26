@@ -12,6 +12,8 @@ let camera, canvas, controls, scene, renderer;
 // Run the "init" function which is like "setup" in p5.
 init();
 
+const flatObject = new THREE.BoxGeometry(100, 3, 80);
+
 // Define initial scene
 function init() {
     // scene setup
@@ -39,6 +41,17 @@ function init() {
     controls.maxDistance = 500;
     controls.cursorStyle = "grab";
     controls.maxPolarAngle = Math.PI / 2;
+
+    //material
+    const bubbleMat = new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        emissive: 0x000000,
+        roughness: 0,
+        metalness: 0,
+        transmission: 1,
+        ior: 1.25,
+        thickness: 2
+    });
 
     // Add world geometry
 
@@ -100,33 +113,27 @@ function init() {
     mesh8.rotateY(1.5708);
     scene.add(mesh8);
 
-    const top = new THREE.BoxGeometry(100, 3, 80);
-    const material9 = new THREE.MeshPhysicalMaterial({
-        color: 0xffffff,
-        metalness: 0,
-        roughness: 0,
-        transmission: 1,
-        transparent: true,
-        opacity: 1,
-        ior: 1.5,
-        thickness: 0.5,
-        envMapIntensity: 1
-    });
-    const mesh9 = new THREE.InstancedMesh(top, material9, 500);
-    mesh9.position.set(90, 50, -1);
-    mesh9.rotateY(1.5708);
-    scene.add(mesh9);
+    //const top = new THREE.BoxGeometry(100, 3, 80);
+    //const material9 = new THREE.MeshPhysicalMaterial({
+    //    color: 0xffffff,
+    //    metalness: 0,
+    //    roughness: 0,
+    //    transmission: 1,
+    //    transparent: true,
+    //    opacity: 1,
+    //    ior: 1.5,
+    //    thickness: 0.5,
+    //    envMapIntensity: 1
+    //});
+    //const mesh9 = new THREE.InstancedMesh(top, material9, 500);
+    //mesh9.position.set(90, 50, -1);
+    //mesh9.rotateY(1.5708);
+    //scene.add(mesh9);
 
-    const bubbleMat = new THREE.MeshPhysicalMaterial({
-        color: 0xffffff,
-        emissive: 0x000000,
-        roughness: 0,
-        metalness: 0,
-        transmission: 1,
-        ior: 1.25,
-        thickness: 2,
-        envMap: refractCube
-    });
+    const top = new new THREE.Mesh(flatObject, bubbleMat);
+    top.position.set(90, 50, -1);
+    top.rotateY(1.5708);
+    scene.add(top);
 
     const knob = new THREE.SphereGeometry(5, 20, 30);
     const material10 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
