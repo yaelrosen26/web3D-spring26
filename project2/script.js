@@ -9,10 +9,10 @@ import { OrbitControls } from "../src/OrbitControls.js";
 // Declaring global variables.
 let camera, canvas, controls, scene, renderer;
 
+const flatObject = new THREE.BoxGeometry(100, 3, 80);
+
 // Run the "init" function which is like "setup" in p5.
 init();
-
-const flatObject = new THREE.BoxGeometry(100, 3, 80);
 
 // Define initial scene
 function init() {
@@ -130,7 +130,7 @@ function init() {
     //mesh9.rotateY(1.5708);
     //scene.add(mesh9);
 
-    const top = new new THREE.Mesh(flatObject, bubbleMat);
+    const top = new THREE.Mesh(flatObject, bubbleMat);
     top.position.set(90, 50, -1);
     top.rotateY(1.5708);
     scene.add(top);
