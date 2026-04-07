@@ -105,18 +105,29 @@ function init() {
         color: 0xffffff,
         metalness: 0,
         roughness: 0,
-        transmission: 1, 
+        transmission: 1,
         transparent: true,
         opacity: 1,
-        ior: 1.5, 
-        thickness: 0.5, 
+        ior: 1.5,
+        thickness: 0.5,
         envMapIntensity: 1
     });
     const mesh9 = new THREE.InstancedMesh(top, material9, 500);
     mesh9.position.set(90, 50, -1);
     mesh9.rotateY(1.5708);
     scene.add(mesh9);
-    
+
+    const bubbleMat = new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        emissive: 0x000000,
+        roughness: 0,
+        metalness: 0,
+        transmission: 1,
+        ior: 1.25,
+        thickness: 2,
+        envMap: refractCube
+    });
+
     const knob = new THREE.SphereGeometry(5, 20, 30);
     const material10 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
     const mesh10 = new THREE.InstancedMesh(knob, material10, 500);
