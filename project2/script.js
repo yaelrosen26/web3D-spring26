@@ -15,6 +15,10 @@ const rightPanel = new THREE.BoxGeometry(3, 30, 80);
 const leftPanel = new THREE.BoxGeometry(3, 30, 80);
 const backPanel = new THREE.BoxGeometry(3, 30, 100);
 const bottomPanel = new THREE.BoxGeometry(100, 3, 80);
+const firstLeg = new THREE.BoxGeometry(10, 100, 10);
+const secondLeg = new THREE.BoxGeometry(10, 100, 10);
+const thirdLeg = new THREE.BoxGeometry(10, 100, 10);
+const fourthLeg = new THREE.BoxGeometry(10, 100, 10);
 
 // Run the "init" function which is like "setup" in p5.
 init();
@@ -66,33 +70,25 @@ function init() {
         map: imgSource1,
         side: THREE.DoubleSide
     });
-    
+
     // Add world geometry
 
     // cabinet1
-    const leg = new THREE.BoxGeometry(10, 100, 10);
-    const material = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh = new THREE.InstancedMesh(leg, material, 500);
-    mesh.position.set(50, 0, 50);
-    scene.add(mesh);
+    const leg = new THREE.Mesh(firstLeg, imgMaterial1);
+    leg.position.set(50, 0, 50);
+    scene.add(leg);
 
-    const leg1 = new THREE.BoxGeometry(10, 100, 10);
-    const material1 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh1 = new THREE.InstancedMesh(leg1, material1, 500);
-    mesh1.position.set(50, 0, -50);
-    scene.add(mesh1);
+    const leg1 = new THREE.Mesh(secondLeg, imgMaterial1);
+    leg1.position.set(50, 0, -50);
+    scene.add(leg1);
 
-    const leg2 = new THREE.BoxGeometry(10, 100, 10);
-    const material2 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh2 = new THREE.InstancedMesh(leg2, material2, 500);
-    mesh2.position.set(125, 0, 50);
-    scene.add(mesh2);
+    const leg2 = new THREE.Mesh(thirdLeg, imgMaterial1);
+    leg2.position.set(125, 0, 50);
+    scene.add(leg2);
 
-    const leg3 = new THREE.BoxGeometry(10, 100, 10);
-    const material3 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh3 = new THREE.InstancedMesh(leg3, material3, 500);
-    mesh3.position.set(125, 0, -50);
-    scene.add(mesh3);
+    const leg3 = new THREE.Mesh(fourthLeg, imgMaterial1);
+    leg3.position.set(125, 0, -50);
+    scene.add(leg3);
 
     const back = new THREE.Mesh(backPanel, imgMaterial1);
     back.position.set(50, 35, 0);
@@ -117,10 +113,10 @@ function init() {
     bottom.rotateY(1.5708);
     scene.add(bottom);
 
-    const top = new THREE.Mesh(flatObject, bubbleMat);
-    top.position.set(90, 50, -1);
-    top.rotateY(1.5708);
-    scene.add(top);
+    //const top = new THREE.Mesh(flatObject, bubbleMat);
+    //top.position.set(90, 50, -1);
+    //top.rotateY(1.5708);
+    //scene.add(top);
 
     const knob = new THREE.SphereGeometry(5, 20, 30);
     const material10 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
@@ -129,23 +125,37 @@ function init() {
     mesh10.rotateY(1.5708);
     scene.add(mesh10);
 
-    //arrowheads
-    // load image as a texture
-    const imgSource = new THREE.TextureLoader().load("../arrowheads/arrowhead1.png");
-    // use loaded testure in a material
-    const imgMaterial = new THREE.MeshBasicMaterial({
-        map: imgSource,
-        transparent: true,
+    //sign
+        const signSource = new THREE.TextureLoader().load("../arrowheads/sign.png");
+    const signMaterial = new THREE.MeshBasicMaterial({
+        map: signSource,
         side: THREE.DoubleSide
     });
     // create image shape (should be the same aspect ratio as the image)
-    const imgGeometry = new THREE.PlaneGeometry(45.25, 64.125);
+    const signGeometry = new THREE.PlaneGeometry(20, 11.4286);
+    // apply image to shape and add to scene
+    const signPlane = new THREE.Mesh(signGeometry, signMaterial);
+    signPlane.position.set(130, 37, -25);
+    signPlane.rotateY(1.5708);
+    scene.add(signPlane);
+    
+    //arrowheads
+    //1
+    const imgSource = new THREE.TextureLoader().load("../arrowheads/artboard1.png");
+    const imgMaterial = new THREE.MeshBasicMaterial({
+        map: imgSource,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const imgGeometry = new THREE.PlaneGeometry(20, 26.6);
     // apply image to shape and add to scene
     const imgPlane = new THREE.Mesh(imgGeometry, imgMaterial);
-    imgPlane.position.set(60, 40, 30);
+    imgPlane.position.set(80, 25, 30);
     imgPlane.rotateX(-1.5708);
     imgPlane.rotateZ(1.5708);
     scene.add(imgPlane);
+    
+    //2
 
     // Ground
     const earth = new THREE.PlaneGeometry(2000, 2000);
