@@ -10,6 +10,11 @@ import { OrbitControls } from "../src/OrbitControls.js";
 let camera, canvas, controls, scene, renderer;
 
 const flatObject = new THREE.BoxGeometry(100, 3, 80);
+const frontPanel = new THREE.BoxGeometry(3, 30, 100);
+const rightPanel = new THREE.BoxGeometry(3, 30, 80);
+const leftPanel = new THREE.BoxGeometry(3, 30, 80);
+const backPanel = new THREE.BoxGeometry(3, 30, 100);
+const bottomPanel = new THREE.BoxGeometry(100, 3, 80);
 
 // Run the "init" function which is like "setup" in p5.
 init();
@@ -42,7 +47,7 @@ function init() {
     controls.cursorStyle = "grab";
     controls.maxPolarAngle = Math.PI / 2;
 
-    //material
+    //glass material
     const bubbleMat = new THREE.MeshPhysicalMaterial({
         color: 0xffffff,
         emissive: 0x000000,
@@ -53,6 +58,15 @@ function init() {
         thickness: 2
     });
 
+    // wood material
+    // load image as a texture
+    const imgSource1 = new THREE.TextureLoader().load("../arrowheads/wood-texture.jpg");
+    // use loaded testure in a material
+    const imgMaterial1 = new THREE.MeshBasicMaterial({
+        map: imgSource1,
+        side: THREE.DoubleSide
+    });
+    
     // Add world geometry
 
     // cabinet1
@@ -80,55 +94,28 @@ function init() {
     mesh3.position.set(125, 0, -50);
     scene.add(mesh3);
 
-    const back = new THREE.BoxGeometry(3, 30, 100);
-    const material4 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh4 = new THREE.InstancedMesh(back, material4, 500);
-    mesh4.position.set(50, 35, 0);
-    scene.add(mesh4);
+    const back = new THREE.Mesh(backPanel, imgMaterial1);
+    back.position.set(50, 35, 0);
+    scene.add(back);
 
-    const front = new THREE.BoxGeometry(3, 30, 100);
-    const material5 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh5 = new THREE.InstancedMesh(front, material5, 500);
-    mesh5.position.set(125, 35, 0);
-    scene.add(mesh5);
+    const front = new THREE.Mesh(frontPanel, imgMaterial1);
+    front.position.set(125, 35, 0);
+    scene.add(front);
 
-    const right = new THREE.BoxGeometry(3, 30, 80);
-    const material6 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh6 = new THREE.InstancedMesh(right, material6, 500);
-    mesh6.position.set(88, 35, -50);
-    mesh6.rotateY(1.5708);
-    scene.add(mesh6);
+    const right = new THREE.Mesh(rightPanel, imgMaterial1);
+    right.position.set(88, 35, -50);
+    right.rotateY(1.5708);
+    scene.add(right);
 
-    const left = new THREE.BoxGeometry(3, 30, 80);
-    const material7 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh7 = new THREE.InstancedMesh(left, material7, 500);
-    mesh7.position.set(88, 35, 50);
-    mesh7.rotateY(1.5708);
-    scene.add(mesh7);
+    const left = new THREE.Mesh(leftPanel, imgMaterial1);
+    left.position.set(88, 35, 50);
+    left.rotateY(1.5708);
+    scene.add(left);
 
-    const bottom = new THREE.BoxGeometry(100, 3, 80);
-    const material8 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
-    const mesh8 = new THREE.InstancedMesh(bottom, material8, 500);
-    mesh8.position.set(90, 19, -1);
-    mesh8.rotateY(1.5708);
-    scene.add(mesh8);
-
-    //const top = new THREE.BoxGeometry(100, 3, 80);
-    //const material9 = new THREE.MeshPhysicalMaterial({
-    //    color: 0xffffff,
-    //    metalness: 0,
-    //    roughness: 0,
-    //    transmission: 1,
-    //    transparent: true,
-    //    opacity: 1,
-    //    ior: 1.5,
-    //    thickness: 0.5,
-    //    envMapIntensity: 1
-    //});
-    //const mesh9 = new THREE.InstancedMesh(top, material9, 500);
-    //mesh9.position.set(90, 50, -1);
-    //mesh9.rotateY(1.5708);
-    //scene.add(mesh9);
+    const bottom = new THREE.Mesh(bottomPanel, imgMaterial1);
+    bottom.position.set(90, 19, -1);
+    bottom.rotateY(1.5708);
+    scene.add(bottom);
 
     const top = new THREE.Mesh(flatObject, bubbleMat);
     top.position.set(90, 50, -1);
@@ -141,6 +128,24 @@ function init() {
     mesh10.position.set(130, 35, -1);
     mesh10.rotateY(1.5708);
     scene.add(mesh10);
+
+    //arrowheads
+    // load image as a texture
+    const imgSource = new THREE.TextureLoader().load("../arrowheads/arrowhead1.png");
+    // use loaded testure in a material
+    const imgMaterial = new THREE.MeshBasicMaterial({
+        map: imgSource,
+        transparent: true,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const imgGeometry = new THREE.PlaneGeometry(90.5, 128.25);
+    // apply image to shape and add to scene
+    const imgPlane = new THREE.Mesh(imgGeometry, imgMaterial);
+    imgPlane.position.set(0, 100, 50);
+    imgPlane.rotateX(-1.5708);
+    imgPlane.rotateZ(1.5708);
+    scene.add(imgPlane);
 
     // Ground
     const earth = new THREE.PlaneGeometry(2000, 2000);
