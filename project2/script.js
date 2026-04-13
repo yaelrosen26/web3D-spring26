@@ -1,4 +1,5 @@
 //90 degrees = 1.5708
+//-180 in x cab2
 
 // The main library script
 import * as THREE from "three";
@@ -113,10 +114,10 @@ function init() {
     bottom.rotateY(1.5708);
     scene.add(bottom);
 
-    //const top = new THREE.Mesh(flatObject, bubbleMat);
-    //top.position.set(90, 50, -1);
-    //top.rotateY(1.5708);
-    //scene.add(top);
+    const top = new THREE.Mesh(flatObject, bubbleMat);
+    top.position.set(90, 50, -1);
+    top.rotateY(1.5708);
+    scene.add(top);
 
     const knob = new THREE.SphereGeometry(5, 20, 30);
     const material10 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
@@ -139,6 +140,59 @@ function init() {
     signPlane.rotateY(1.5708);
     scene.add(signPlane);
     
+    //cabinent 2
+    const legCab = new THREE.Mesh(firstLeg, imgMaterial1);
+    legCab.position.set(-130, 0, 50);
+    scene.add(legCab);
+
+    const leg1Cab = new THREE.Mesh(secondLeg, imgMaterial1);
+    leg1Cab.position.set(-130, 0, -50);
+    scene.add(leg1Cab);
+
+    const leg2Cab = new THREE.Mesh(thirdLeg, imgMaterial1);
+    leg2Cab.position.set(-55, 0, 50);
+    scene.add(leg2Cab);
+
+    const leg3Cab = new THREE.Mesh(fourthLeg, imgMaterial1);
+    leg3Cab.position.set(-55, 0, -50);
+    scene.add(leg3Cab);
+
+    const backCab = new THREE.Mesh(backPanel, imgMaterial1);
+    backCab.position.set(-130, 35, 0);
+    scene.add(backCab);
+
+    const frontCab = new THREE.Mesh(frontPanel, imgMaterial1);
+    frontCab.position.set(-55, 35, 0);
+    scene.add(frontCab);
+
+    const rightCab = new THREE.Mesh(rightPanel, imgMaterial1);
+    rightCab.position.set(-92, 35, -50);
+    rightCab.rotateY(1.5708);
+    scene.add(rightCab);
+
+    const leftCab = new THREE.Mesh(leftPanel, imgMaterial1);
+    leftCab.position.set(-92, 35, 50);
+    leftCab.rotateY(1.5708);
+    scene.add(leftCab);
+
+    const bottomCab = new THREE.Mesh(bottomPanel, imgMaterial1);
+    bottomCab.position.set(-90, 19, -1);
+    bottomCab.rotateY(1.5708);
+    scene.add(bottomCab);
+
+    const topCab = new THREE.Mesh(flatObject, bubbleMat);
+    topCab.position.set(-90, 50, -1);
+    topCab.rotateY(1.5708);
+    scene.add(topCab);
+
+    const knobCab = new THREE.SphereGeometry(5, 20, 30);
+    const material11 = new THREE.MeshPhongMaterial({ color: 0x635326, flatShading: true });
+    const mesh11 = new THREE.InstancedMesh(knobCab, material11, 500);
+    mesh11.position.set(-50, 35, -1);
+    mesh11.rotateY(1.5708);
+    scene.add(mesh11);
+    
+    
     //arrowheads
     //1
     const imgSource = new THREE.TextureLoader().load("../arrowheads/artboard1.png");
@@ -154,8 +208,6 @@ function init() {
     imgPlane.rotateX(-1.5708);
     imgPlane.rotateZ(1.5708);
     scene.add(imgPlane);
-    
-    //2
 
     // Ground
     const earth = new THREE.PlaneGeometry(2000, 2000);
