@@ -247,7 +247,7 @@ function init() {
     const img2Geometry = new THREE.PlaneGeometry(20, 26.6);
     // apply image to shape and add to scene
     const img2Plane = new THREE.Mesh(img2Geometry, img2Material);
-    img2Plane.position.set(100, 25, -5);
+    img2Plane.position.set(90, 25, -2);
     img2Plane.rotateX(-1.5708);
     img2Plane.rotateZ(1.5708);
     scene.add(img2Plane);
@@ -262,7 +262,7 @@ function init() {
     const img3Geometry = new THREE.PlaneGeometry(20, 26.6);
     // apply image to shape and add to scene
     const img3Plane = new THREE.Mesh(img3Geometry, img3Material);
-    img3Plane.position.set(70, 25, -35);
+    img3Plane.position.set(70, 25, -30);
     img3Plane.rotateX(-1.5708);
     img3Plane.rotateZ(1.5708);
     scene.add(img3Plane);
@@ -277,10 +277,85 @@ function init() {
     const img4Geometry = new THREE.PlaneGeometry(20, 26.6);
     // apply image to shape and add to scene
     const img4Plane = new THREE.Mesh(img4Geometry, img4Material);
-    img4Plane.position.set(100, 25, -35);
+    img4Plane.position.set(100, 25, -30);
     img4Plane.rotateX(-1.5708);
     img4Plane.rotateZ(1.5708);
     scene.add(img4Plane);
+
+    //6
+    const img5Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-6.png");
+    const img5Material = new THREE.MeshBasicMaterial({
+        map: img5Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img5Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img5Plane = new THREE.Mesh(img5Geometry, img5Material);
+    img5Plane.position.set(-110, 25, 30);
+    img5Plane.rotateX(-1.5708);
+    img5Plane.rotateZ(1.5708);
+    scene.add(img5Plane);
+
+    //7
+    const img6Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-7.png");
+    const img6Material = new THREE.MeshBasicMaterial({
+        map: img6Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img6Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img6Plane = new THREE.Mesh(img6Geometry, img6Material);
+    img6Plane.position.set(-80, 25, 30);
+    img6Plane.rotateX(-1.5708);
+    img6Plane.rotateZ(1.5708);
+    scene.add(img6Plane);
+
+    //8
+    const img7Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-8.png");
+    const img7Material = new THREE.MeshBasicMaterial({
+        map: img7Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img7Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img7Plane = new THREE.Mesh(img7Geometry, img7Material);
+    img7Plane.position.set(-90, 25, -2);
+    img7Plane.rotateX(-1.5708);
+    img7Plane.rotateZ(1.5708);
+    scene.add(img7Plane);
+    
+    //9
+    const img8Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-9.png");
+    const img8Material = new THREE.MeshBasicMaterial({
+        map: img8Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img8Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img8Plane = new THREE.Mesh(img8Geometry, img8Material);
+    img8Plane.position.set(-110, 25, -30);
+    img8Plane.rotateX(-1.5708);
+    img8Plane.rotateZ(1.5708);
+    scene.add(img8Plane);
+    
+    //10
+    const img9Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-10.png");
+    const img9Material = new THREE.MeshBasicMaterial({
+        map: img9Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img9Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img9Plane = new THREE.Mesh(img9Geometry, img9Material);
+    img9Plane.position.set(-80, 25, -30);
+    img9Plane.rotateX(-1.5708);
+    img9Plane.rotateZ(1.5708);
+    scene.add(img9Plane);
 
     // Ground
     const earth = new THREE.PlaneGeometry(2000, 2000);
@@ -295,12 +370,12 @@ function init() {
     dirLight1.position.set(1, 1, 1);
     scene.add(dirLight1);
 
-    const dirLight2 = new THREE.DirectionalLight(0xffffff, 2);
-    dirLight2.position.set(-1, -1, -1);
-    scene.add(dirLight2);
+    //const dirLight2 = new THREE.DirectionalLight(0xffffff, 2);
+    //dirLight2.position.set(-1, -1, -1);
+    //scene.add(dirLight2);
 
-    const ambientLight = new THREE.AmbientLight(0x555555);
-    scene.add(ambientLight);
+    //const ambientLight = new THREE.AmbientLight(0x555555);
+    //scene.add(ambientLight);
 }
 
 // Function to update moving objects, in this case the camera.
