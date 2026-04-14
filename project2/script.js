@@ -32,7 +32,7 @@ function init() {
     scene.background = new THREE.Color(0xbfeff5);
     scene.fog = new THREE.FogExp2(0x9aa5a6, 0.0015);
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    //renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(600, 600);
     renderer.setAnimationLoop(animate);
     canvas.appendChild(renderer.domElement);
@@ -127,7 +127,7 @@ function init() {
     scene.add(mesh10);
 
     //sign
-        const signSource = new THREE.TextureLoader().load("../arrowheads/sign.png");
+    const signSource = new THREE.TextureLoader().load("../arrowheads/sign.png");
     const signMaterial = new THREE.MeshBasicMaterial({
         map: signSource,
         side: THREE.DoubleSide
@@ -139,7 +139,7 @@ function init() {
     signPlane.position.set(130, 37, -25);
     signPlane.rotateY(1.5708);
     scene.add(signPlane);
-    
+
     //cabinent 2
     const legCab = new THREE.Mesh(firstLeg, imgMaterial1);
     legCab.position.set(-130, 0, 50);
@@ -191,8 +191,21 @@ function init() {
     mesh11.position.set(-50, 35, -1);
     mesh11.rotateY(1.5708);
     scene.add(mesh11);
-    
-    
+
+    //sign2
+    const sign1Source = new THREE.TextureLoader().load("../arrowheads/sign.png");
+    const sign1Material = new THREE.MeshBasicMaterial({
+        map: sign1Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const sign1Geometry = new THREE.PlaneGeometry(20, 11.4286);
+    // apply image to shape and add to scene
+    const sign1Plane = new THREE.Mesh(sign1Geometry, sign1Material);
+    sign1Plane.position.set(-50, 37, -25);
+    sign1Plane.rotateY(1.5708);
+    scene.add(sign1Plane);
+
     //arrowheads
     //1
     const imgSource = new THREE.TextureLoader().load("../arrowheads/artboard1.png");
@@ -204,10 +217,70 @@ function init() {
     const imgGeometry = new THREE.PlaneGeometry(20, 26.6);
     // apply image to shape and add to scene
     const imgPlane = new THREE.Mesh(imgGeometry, imgMaterial);
-    imgPlane.position.set(80, 25, 30);
+    imgPlane.position.set(70, 25, 30);
     imgPlane.rotateX(-1.5708);
     imgPlane.rotateZ(1.5708);
     scene.add(imgPlane);
+
+    //2
+    const img1Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-2.png");
+    const img1Material = new THREE.MeshBasicMaterial({
+        map: img1Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img1Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img1Plane = new THREE.Mesh(img1Geometry, img1Material);
+    img1Plane.position.set(100, 25, 30);
+    img1Plane.rotateX(-1.5708);
+    img1Plane.rotateZ(1.5708);
+    scene.add(img1Plane);
+
+    //3
+    const img2Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-3.png");
+    const img2Material = new THREE.MeshBasicMaterial({
+        map: img2Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img2Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img2Plane = new THREE.Mesh(img2Geometry, img2Material);
+    img2Plane.position.set(100, 25, -5);
+    img2Plane.rotateX(-1.5708);
+    img2Plane.rotateZ(1.5708);
+    scene.add(img2Plane);
+
+    //4
+    const img3Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-4.png");
+    const img3Material = new THREE.MeshBasicMaterial({
+        map: img3Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img3Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img3Plane = new THREE.Mesh(img3Geometry, img3Material);
+    img3Plane.position.set(70, 25, -35);
+    img3Plane.rotateX(-1.5708);
+    img3Plane.rotateZ(1.5708);
+    scene.add(img3Plane);
+
+    //5
+    const img4Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-5.png");
+    const img4Material = new THREE.MeshBasicMaterial({
+        map: img4Source,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const img4Geometry = new THREE.PlaneGeometry(20, 26.6);
+    // apply image to shape and add to scene
+    const img4Plane = new THREE.Mesh(img4Geometry, img4Material);
+    img4Plane.position.set(100, 25, -35);
+    img4Plane.rotateX(-1.5708);
+    img4Plane.rotateZ(1.5708);
+    scene.add(img4Plane);
 
     // Ground
     const earth = new THREE.PlaneGeometry(2000, 2000);
