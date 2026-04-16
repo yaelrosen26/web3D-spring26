@@ -20,6 +20,7 @@ const firstLeg = new THREE.BoxGeometry(10, 100, 10);
 const secondLeg = new THREE.BoxGeometry(10, 100, 10);
 const thirdLeg = new THREE.BoxGeometry(10, 100, 10);
 const fourthLeg = new THREE.BoxGeometry(10, 100, 10);
+const earth1 = new THREE.PlaneGeometry(2000, 2000);
 
 // Run the "init" function which is like "setup" in p5.
 init();
@@ -69,6 +70,15 @@ function init() {
     // use loaded testure in a material
     const imgMaterial1 = new THREE.MeshBasicMaterial({
         map: imgSource1,
+        side: THREE.DoubleSide
+    });
+
+    // floor material
+    // load image as a texture
+    const imgSource2 = new THREE.TextureLoader().load("../arrowheads/floor");
+    // use loaded testure in a material
+    const imgMaterial2 = new THREE.MeshBasicMaterial({
+        map: imgSource2,
         side: THREE.DoubleSide
     });
 
@@ -326,7 +336,7 @@ function init() {
     img7Plane.rotateX(-1.5708);
     img7Plane.rotateZ(1.5708);
     scene.add(img7Plane);
-    
+
     //9
     const img8Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-9.png");
     const img8Material = new THREE.MeshBasicMaterial({
@@ -341,7 +351,7 @@ function init() {
     img8Plane.rotateX(-1.5708);
     img8Plane.rotateZ(1.5708);
     scene.add(img8Plane);
-    
+
     //10
     const img9Source = new THREE.TextureLoader().load("../arrowheads/arrowheadsArtboard-10.png");
     const img9Material = new THREE.MeshBasicMaterial({
@@ -358,12 +368,34 @@ function init() {
     scene.add(img9Plane);
 
     // Ground
-    const earth = new THREE.PlaneGeometry(2000, 2000);
-    const ground = new THREE.MeshPhongMaterial({ color: 0x968d88, flatShading: true });
-    const meshFloor = new THREE.InstancedMesh(earth, ground, 500);
-    meshFloor.translateY(-60);
-    meshFloor.rotateX(-1.5708);
-    scene.add(meshFloor);
+    const floor = new THREE.Mesh(earth1, imgMaterial2);
+    floor.translateY(-60);
+    floor.rotateX(-1.5708);
+    scene.add(floor);
+
+    //back wall
+    const wall = new THREE.PlaneGeometry(2000, 5000);
+    const material = new THREE.MeshBasicMaterial({ color: 0xf3f3cb, side: THREE.DoubleSide });
+    const plane = new THREE.Mesh(wall, material);
+    plane.position.set(-500, -500, -25);
+    plane.rotateY(-1.5708);
+    scene.add(plane);
+    
+    //right wall
+    const wall2 = new THREE.PlaneGeometry(2000, 4000);
+    const material2 = new THREE.MeshBasicMaterial({ color: 0xf3f3cb, side: THREE.DoubleSide });
+    const plane2 = new THREE.Mesh(wall2, material2);
+    plane2.position.set(-1000, 37, -325);
+    plane2.rotateZ(1.5708);
+    scene.add(plane2);
+    
+    //left wall
+    const wall3 = new THREE.PlaneGeometry(2000, 4000);
+    const material3 = new THREE.MeshBasicMaterial({ color: 0xf3f3cb, side: THREE.DoubleSide });
+    const plane3 = new THREE.Mesh(wall3, material3);
+    plane3.position.set(-1000, 37, 325);
+    plane3.rotateZ(1.5708);
+    scene.add(plane3);
 
     // lights
     const dirLight1 = new THREE.DirectionalLight(0xffffff, 3);

@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+    margin: auto;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin: auto;
+}
+
+p {
+    text-align: center;
+    margin: auto;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 1%;
+}
