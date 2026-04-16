@@ -369,7 +369,7 @@ function init() {
 
     // Ground
     const floor = new THREE.Mesh(earth1, imgMaterial2);
-    floor.translateY(-60);
+    floor.translateY(-50);
     floor.rotateX(-1.5708);
     scene.add(floor);
 
