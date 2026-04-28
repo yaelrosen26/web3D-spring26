@@ -176,7 +176,7 @@ function init() {
 
     // Load GLTF model, add material, and add it to the scene
     const loader2 = new GLTFLoader().load(
-        "../assets/fog_block_1.glb",
+        "../assets/Laptop_low.glb",
         function (gltf) {
             // Scan loaded model for mesh and apply defined material if mesh is present
             gltf.scene.traverse(function (child) {
