@@ -153,17 +153,17 @@ function init() {
         new THREE.MeshPhongMaterial({ color: 0xffffff }) // side
     ];
 
-    const loader = new TTFLoader();
-
-    loader.load("../assets/CourierPrime-Bold.ttf", function (json) {
-        font = new Font(json);
-        createText();
-    });
-
-    group = new THREE.Group();
-    group.position.y = 100;
-
-    scene.add(group);
+    //const loader = new TTFLoader();
+//
+    //loader.load("../assets/CourierPrime-Bold.ttf", function (json) {
+    //    font = new Font(json);
+    //    createText();
+    //});
+//
+    //group = new THREE.Group();
+    //group.position.y = 100;
+//
+    //scene.add(group);
 
     // model
 
@@ -179,15 +179,15 @@ function init() {
         "../assets/Laptop_low.glb",
         function (gltf) {
             // Scan loaded model for mesh and apply defined material if mesh is present
-            gltf.scene.traverse(function (child) {
-                if (child.isMesh) {
-                    child.material = newMat;
-                }
-            });
+            //gltf.scene.traverse(function (child) {
+            //    if (child.isMesh) {
+            //        child.material = newMat;
+            //    }
+            //});
             // set position and scale
             mesh = gltf.scene;
-            mesh.position.set(-20, -15, -50);
-            mesh.scale.set(0.4, 0.4, 0.4);
+            mesh.position.set(-20, 0, -50);
+            mesh.scale.set(20, 20, 20);
             // Add model to scene
             scene.add(mesh);
         },
