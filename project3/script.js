@@ -176,7 +176,7 @@ function init() {
 
     // Load GLTF model, add material, and add it to the scene
     const loader2 = new GLTFLoader().load(
-        "../assets/Laptop_low.glb",
+        "../assets/laptop.glb",
         function (gltf) {
             // Scan loaded model for mesh and apply defined material if mesh is present
             //gltf.scene.traverse(function (child) {
@@ -187,7 +187,7 @@ function init() {
             // set position and scale
             mesh = gltf.scene;
             mesh.position.set(-20, 0, -50);
-            mesh.scale.set(20, 20, 20);
+            mesh.scale.set(2, 2, 2);
             // Add model to scene
             scene.add(mesh);
         },
