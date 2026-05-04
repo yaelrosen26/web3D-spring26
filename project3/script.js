@@ -196,6 +196,29 @@ function init() {
             console.error(error);
         }
     );
+    
+    // ipad
+    const loader3 = new GLTFLoader().load(
+        "../assets/ipad.glb",
+        function (gltf1) {
+            // Scan loaded model for mesh and apply defined material if mesh is present
+            //gltf.scene.traverse(function (child) {
+            //    if (child.isMesh) {
+            //        child.material = newMat;
+            //    }
+            //});
+            // set position and scale
+            mesh1 = gltf1.scene;
+            mesh1.position.set(-20, 50, -50);
+            mesh1.scale.set(100, 100, 100);
+            // Add model to scene
+            scene.add(mesh1);
+        },
+        undefined,
+        function (error) {
+            console.error(error);
+        }
+    );
 
     // Ground
     const earth = new THREE.PlaneGeometry(4000, 4000);
