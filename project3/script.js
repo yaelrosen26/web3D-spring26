@@ -15,6 +15,11 @@ import { TTFLoader } from "../src/TTFLoader.js";
 import { TextGeometry } from "../src/TextGeometry.js";
 import { GLTFLoader } from "../src/GLTFLoader.js";
 
+//half tone
+import { EffectComposer } from "../src/EffectComposer.js";
+import { RenderPass } from "../src/RenderPass.js";
+import { HalftonePass } from "../src/HalftonePass.js";
+
 // Declaring global variables.
 let camera, canvas, controls, scene, renderer;
 
@@ -39,6 +44,9 @@ let textMesh1;
 let textMesh2;
 let group;
 let mesh;
+let mesh11;
+let mesh12;
+let composer;
 
 // Run the "init" function which is like "setup" in p5.
 init();
@@ -154,15 +162,15 @@ function init() {
     ];
 
     //const loader = new TTFLoader();
-//
+    //
     //loader.load("../assets/CourierPrime-Bold.ttf", function (json) {
     //    font = new Font(json);
     //    createText();
     //});
-//
+    //
     //group = new THREE.Group();
     //group.position.y = 100;
-//
+    //
     //scene.add(group);
 
     // model
@@ -174,7 +182,7 @@ function init() {
         shininess: 100
     });
 
-    // Load GLTF model, add material, and add it to the scene
+    // laptop
     const loader2 = new GLTFLoader().load(
         "../assets/laptop.glb",
         function (gltf) {
@@ -186,8 +194,9 @@ function init() {
             //});
             // set position and scale
             mesh = gltf.scene;
-            mesh.position.set(-20, 0, -50);
-            mesh.scale.set(2, 2, 2);
+            mesh.position.set(-20, 0, -70);
+            mesh.scale.set(1.5, 1.5, 1.5);
+            mesh.rotateY(0.61799);
             // Add model to scene
             scene.add(mesh);
         },
@@ -196,7 +205,7 @@ function init() {
             console.error(error);
         }
     );
-    
+
     // ipad
     const loader3 = new GLTFLoader().load(
         "../assets/ipad.glb",
@@ -209,10 +218,34 @@ function init() {
             //});
             // set position and scale
             mesh11 = gltf.scene;
-            mesh11.position.set(-20, 50, -50);
-            mesh11.scale.set(100, 100, 100);
+            mesh11.position.set(-20, 0, -300);
+            mesh11.scale.set(5, 5, 5);
             // Add model to scene
             scene.add(mesh11);
+        },
+        undefined,
+        function (error) {
+            console.error(error);
+        }
+    );
+
+    // camera
+    const loader4 = new GLTFLoader().load(
+        "../assets/camera.glb",
+        function (gltf) {
+            // Scan loaded model for mesh and apply defined material if mesh is present
+            //gltf.scene.traverse(function (child) {
+            //    if (child.isMesh) {
+            //        child.material = newMat;
+            //    }
+            //});
+            // set position and scale
+            mesh12 = gltf.scene;
+            mesh12.position.set(50, 0, -200);
+            mesh12.scale.set(50, 50, 50);
+            mesh12.rotateY(2.35619);
+            // Add model to scene
+            scene.add(mesh12);
         },
         undefined,
         function (error) {
@@ -239,6 +272,26 @@ function init() {
 
     const ambientLight = new THREE.AmbientLight(0x555555);
     scene.add(ambientLight);
+    
+    // post-processing
+
+composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera);
+const params = {
+    shape: 1,
+    radius: 1.704,
+    rotateR: Math.PI / 12,
+    rotateB: (Math.PI / 12) * 2,
+    rotateG: (Math.PI / 12) * 3,
+    scatter: 0,
+    blending: 0.16,
+    blendingMode: 1,
+    greyscale: false,
+    disable: false
+};
+const halftonePass = new HalftonePass(params);
+composer.addPass(renderPass);
+composer.addPass(halftonePass);
 }
 
 // Function to update moving objects, in this case the camera.
@@ -282,7 +335,7 @@ function animate() {
 
 // Function to render the scene using the camera.
 function render() {
-    renderer.render(scene, camera);
+    composer.render(scene, camera);
 }
 
 //
@@ -312,3 +365,13 @@ function createText() {
 
     group.add(textMesh1);
 }
+
+
+
+window.onresize = function () {
+    // resize composer
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    composer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+};
