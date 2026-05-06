@@ -194,7 +194,7 @@ function init() {
             //});
             // set position and scale
             mesh = gltf.scene;
-            mesh.position.set(-20, 0, -70);
+            mesh.position.set(-30, 0, -100);
             mesh.scale.set(1.5, 1.5, 1.5);
             mesh.rotateY(0.61799);
             // Add model to scene
@@ -218,7 +218,7 @@ function init() {
             //});
             // set position and scale
             mesh11 = gltf.scene;
-            mesh11.position.set(-20, 0, -300);
+            mesh11.position.set(-70, 0, -500);
             mesh11.scale.set(5, 5, 5);
             // Add model to scene
             scene.add(mesh11);
@@ -241,9 +241,9 @@ function init() {
             //});
             // set position and scale
             mesh12 = gltf.scene;
-            mesh12.position.set(50, 0, -200);
+            mesh12.position.set(50, 0, -300);
             mesh12.scale.set(50, 50, 50);
-            mesh12.rotateY(2.35619);
+            mesh12.rotateY(0.785398);
             // Add model to scene
             scene.add(mesh12);
         },
@@ -253,6 +253,22 @@ function init() {
         }
     );
 
+    //laptop image
+    const imgSource = new THREE.TextureLoader().load("../arrowheads/laptopimg.png");
+    const imgMaterial = new THREE.MeshBasicMaterial({
+        map: imgSource,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const imgGeometry = new THREE.PlaneGeometry(24, 24);
+    // apply image to shape and add to scene
+    const imgPlane = new THREE.Mesh(imgGeometry, imgMaterial);
+    imgPlane.position.set(-40, 15.5, -110);
+    imgPlane.rotateY(0.61799);
+    //imgPlane.rotateZ(1.5708);
+    scene.add(imgPlane);
+    
+    
     // Ground
     const earth = new THREE.PlaneGeometry(4000, 4000);
     const ground = new THREE.MeshPhongMaterial({ color: 0xe10dee, flatShading: true });
