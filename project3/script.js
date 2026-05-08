@@ -268,6 +268,36 @@ function init() {
     //imgPlane.rotateZ(1.5708);
     scene.add(imgPlane);
     
+    //camera image
+    const imgSource1 = new THREE.TextureLoader().load("../arrowheads/cameraimg.png");
+    const imgMaterial1 = new THREE.MeshBasicMaterial({
+        map: imgSource1,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const imgGeometry1 = new THREE.PlaneGeometry(27, 18);
+    // apply image to shape and add to scene
+    const imgPlane1 = new THREE.Mesh(imgGeometry1, imgMaterial1);
+    imgPlane1.position.set(50, 0, -290);
+    imgPlane1.rotateY(-0.785398);
+    //imgPlane.rotateZ(1.5708);
+    scene.add(imgPlane1);
+    
+    //ipad image
+    const imgSource2 = new THREE.TextureLoader().load("../arrowheads/ipadimg.png");
+    const imgMaterial2 = new THREE.MeshBasicMaterial({
+        map: imgSource2,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const imgGeometry2 = new THREE.PlaneGeometry(80, 60);
+    // apply image to shape and add to scene
+    const imgPlane2 = new THREE.Mesh(imgGeometry2, imgMaterial2);
+    imgPlane2.position.set(-70, 0, -498);
+    //imgPlane2.rotateY(-0.785398);
+    //imgPlane2.rotateZ(1.5708);
+    scene.add(imgPlane2);
+    
     
     // Ground
     const earth = new THREE.PlaneGeometry(4000, 4000);
