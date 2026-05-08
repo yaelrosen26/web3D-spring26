@@ -267,7 +267,7 @@ function init() {
     imgPlane.rotateY(0.61799);
     //imgPlane.rotateZ(1.5708);
     scene.add(imgPlane);
-    
+
     //camera image
     const imgSource1 = new THREE.TextureLoader().load("../arrowheads/cameraimg.png");
     const imgMaterial1 = new THREE.MeshBasicMaterial({
@@ -282,7 +282,7 @@ function init() {
     imgPlane1.rotateY(-0.785398);
     //imgPlane.rotateZ(1.5708);
     scene.add(imgPlane1);
-    
+
     //ipad image
     const imgSource2 = new THREE.TextureLoader().load("../arrowheads/ipadimg.png");
     const imgMaterial2 = new THREE.MeshBasicMaterial({
@@ -297,11 +297,23 @@ function init() {
     //imgPlane2.rotateY(-0.785398);
     //imgPlane2.rotateZ(1.5708);
     scene.add(imgPlane2);
-    
-    
+
+    //statement image
+    const imgSource3 = new THREE.TextureLoader().load("../arrowheads/statement.png");
+    const imgMaterial3 = new THREE.MeshBasicMaterial({
+        map: imgSource3,
+        side: THREE.DoubleSide
+    });
+    // create image shape (should be the same aspect ratio as the image)
+    const imgGeometry3 = new THREE.PlaneGeometry(480, 270);
+    // apply image to shape and add to scene
+    const imgPlane3 = new THREE.Mesh(imgGeometry3, imgMaterial3);
+    imgPlane3.position.set(0, 60, -650);
+    scene.add(imgPlane3);
+
     // Ground
     const earth = new THREE.PlaneGeometry(4000, 4000);
-    const ground = new THREE.MeshPhongMaterial({ color: 0xe10dee, flatShading: true });
+    const ground = new THREE.MeshPhongMaterial({ color: 0xbfeff5, flatShading: true });
     const mesh2 = new THREE.InstancedMesh(earth, ground, 500);
     mesh2.translateY(-60);
     mesh2.rotateX(-1.5708);
@@ -318,26 +330,26 @@ function init() {
 
     const ambientLight = new THREE.AmbientLight(0x555555);
     scene.add(ambientLight);
-    
+
     // post-processing
 
-composer = new EffectComposer(renderer);
-const renderPass = new RenderPass(scene, camera);
-const params = {
-    shape: 1,
-    radius: 1.704,
-    rotateR: Math.PI / 12,
-    rotateB: (Math.PI / 12) * 2,
-    rotateG: (Math.PI / 12) * 3,
-    scatter: 0,
-    blending: 0.16,
-    blendingMode: 1,
-    greyscale: false,
-    disable: false
-};
-const halftonePass = new HalftonePass(params);
-composer.addPass(renderPass);
-composer.addPass(halftonePass);
+    composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    const params = {
+        shape: 1,
+        radius: 1.704,
+        rotateR: Math.PI / 12,
+        rotateB: (Math.PI / 12) * 2,
+        rotateG: (Math.PI / 12) * 3,
+        scatter: 0,
+        blending: 0.16,
+        blendingMode: 1,
+        greyscale: false,
+        disable: false
+    };
+    const halftonePass = new HalftonePass(params);
+    composer.addPass(renderPass);
+    composer.addPass(halftonePass);
 }
 
 // Function to update moving objects, in this case the camera.
@@ -411,8 +423,6 @@ function createText() {
 
     group.add(textMesh1);
 }
-
-
 
 window.onresize = function () {
     // resize composer
