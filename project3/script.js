@@ -260,10 +260,10 @@ function init() {
         side: THREE.DoubleSide
     });
     // create image shape (should be the same aspect ratio as the image)
-    const imgGeometry = new THREE.PlaneGeometry(24, 24);
+    const imgGeometry = new THREE.PlaneGeometry(24, 25.25);
     // apply image to shape and add to scene
     const imgPlane = new THREE.Mesh(imgGeometry, imgMaterial);
-    imgPlane.position.set(-40, 15.5, -110);
+    imgPlane.position.set(-40, 16, -112);
     imgPlane.rotateY(0.61799);
     //imgPlane.rotateZ(1.5708);
     scene.add(imgPlane);
