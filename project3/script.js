@@ -308,7 +308,7 @@ function init() {
     const imgGeometry3 = new THREE.PlaneGeometry(480, 270);
     // apply image to shape and add to scene
     const imgPlane3 = new THREE.Mesh(imgGeometry3, imgMaterial3);
-    imgPlane3.position.set(0, 60, -650);
+    imgPlane3.position.set(0, 60, -750);
     scene.add(imgPlane3);
 
     // Ground
